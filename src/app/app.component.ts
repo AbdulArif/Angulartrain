@@ -26,13 +26,9 @@ export class AppComponent {
 
   changePdfColor() {
     const el: HTMLElement | null = typeof this.viewer !== 'undefined' ? (this.viewer as HTMLElement) : document.body;
-    // console.log(this.viewer)
     if (el) {
       el.style.filter = 'grayscale(100%) brightness(100%) invert(1%) saturate(100%) contrast(100%)';
       console.log("style...........")
     }
-    console.log(el.style)
-
-
   }
 }
