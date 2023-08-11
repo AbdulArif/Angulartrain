@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Angulartrain';
+
+  pdfSrc: any;
+
+  constructor(private sanitizer: DomSanitizer) {}
+
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      this.pdfSrc = this.sanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(file));
+    }
+  }
 }
