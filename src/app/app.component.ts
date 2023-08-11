@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 
 
@@ -12,17 +12,27 @@ export class AppComponent {
   title = 'Angulartrain';
 
   pdfSrc: any;
+  viewer!: any;
 
-  constructor(private sanitizer: DomSanitizer) {}
+  constructor(private sanitizer: DomSanitizer) { }
 
   onFileSelected(event: any) {
     const file = event.target.files[0];
     if (file) {
+      this.changePdfColor()
       this.pdfSrc = this.sanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(file));
     }
   }
 
-  changePdf(){
-    
+  changePdfColor() {
+    const el: HTMLElement | null = typeof this.viewer !== 'undefined' ? (this.viewer as HTMLElement) : document.body;
+    // console.log(this.viewer)
+    if (el) {
+      el.style.filter = 'grayscale(100%) brightness(100%) invert(1%) saturate(100%) contrast(100%)';
+      console.log("style...........")
+    }
+    console.log(el.style)
+
+
   }
 }
