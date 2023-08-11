@@ -19,4 +19,8 @@ export class AppComponent {
       this.pdfSrc = this.sanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(file));
     }
   }
+
+  changePdf(){
+    
+  }
 }
